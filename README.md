@@ -78,8 +78,8 @@ If this terse explanation causes your eyes to glaze over, DON'T PANIC. An intuit
 - I felt inspired to design it this way after watching a Youtube video where Richard Feynman performed experiments in college with a friend and realized that Visual and Auditory systems work independently. 
 
 *UI Design theory*
-- The fingers resting on the home row keys indicate all of these options in order of decreasing probability.
-- probability has inversely proportional relationship to pitch
+- The fingers resting on the home row keys indicate all of these options in a way that balances the load on the left and right hands according to probability.
+- The low a is most likely while the high a is least likely. The remaining keys in the home row are set the opposite way.
 - NZT indicates half-time via a tenuous warble that elicits an uncertain feeling. 
 - NZT indicates failure via a sad chromatic descent. 
 - NZT indicates success via a happy major scale. 
