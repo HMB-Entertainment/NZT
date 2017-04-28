@@ -1,5 +1,4 @@
-# NZT
-Raytraced N-back in 3 dimensions with Pygame logic and tunes from Haskell
+
 
 ![wow](screenshot.png  "Intro")
 
@@ -35,7 +34,7 @@ NZT represents a purely visual 3D evolution of these games. I hope that it you f
 
 3. run nzt.py using python version 2
 
-- python nzt.py
+- python code/nzt.py
 
 ## Gameplay
 For standard gameplay, programmers and typists will appreciate that the four fingers rest gently on the home row keys: "a s d f j k l ;". DON'T PANIC, they will not have to move.
