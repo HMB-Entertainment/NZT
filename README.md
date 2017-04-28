@@ -65,13 +65,18 @@ At half-time (in this case 15 seconds) a wavering warble tune will indicate that
 - 'l' -> zy plane -> G // CYAN
 - ';' -> xyz -> same element -> high A // WHITE
 
-If this terse explanation causes your eyes to glaze over, DON'T PANIC. A visual explanation using rules of RGB additive synthesis illustrates the relationship between elments.
+If this terse explanation causes your eyes to glaze over, DON'T PANIC. A visual explanation using rules of RGB additive synthesis illustrates the relationship between elements. 
 
-Look and find enlightenment:
-
+CENTER 
 ![center](tutorial222.png  "Universal Symmetry")
+
+CORNER
 ![corner](tutorial111.png  "8x symmetry")
+
+FACE
 ![face](tutorial221.png  "6x symmetry")
+
+EDGE
 ![edge](welcomeToThe231.png  "12x symmetry")
 
 ## Technical Features
