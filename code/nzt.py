@@ -48,6 +48,7 @@ def play(x):
     path = os.path.join('sounds/mp3s', x)
     pygame.mixer.music.load(path)
     pygame.mixer.music.play()
+
 events = {K_a: ['1.mp3', 1],
           K_s: ['2.mp3', 7],
           K_d: ['3.mp3', 6],
@@ -56,10 +57,12 @@ events = {K_a: ['1.mp3', 1],
           K_k: ['6.mp3', 3],
           K_l: ['7.mp3', 2],
           K_SEMICOLON: ['8.mp3', 8]}
+
 def key_up(Key):
-    [f, a] = events[Key]
-    play(f)
-    answer = a
+    [f, a] = events.get(Key, ['',0])
+    if (a != 0):
+        play(f)
+        answer = a
 
 game = [cubeElem[random.randint(0,26)] for i in range(TRIALS + LEVEL)] #generates game according to user settings
 parse = [lstpts(lstdiff(game[i],game[i+LEVEL]))+1 for i in range(TRIALS)] #generates game answers
@@ -82,7 +85,11 @@ while True: # main game loop
         if event.type == USEREVENT+1:
             pygame.time.set_timer(USEREVENT+2, WAIT*500)
             trialnumber += 1
-            DISPLAYSURF.blit(pygame.transform.scale(images[int(''.join(map(str,game[trialnumber])))], (WINDOWWIDTH, WINDOWHEIGHT)), (0,0))
+            trial_game = game[trialnumber]
+            trial_int = int(''.join(map(str,trial_game)))
+            scale = (WINDOWWIDTH, WINDOWHEIGHT)
+            scaled_pic = pygame.transform.scale(images[trial_int], scale)
+            DISPLAYSURF.blit(scaled_pic, (0,0))
             if trialnumber > LEVEL:
                 if answer == parse[trialnumber-LEVEL-1]:
                     play('right.mp3')
