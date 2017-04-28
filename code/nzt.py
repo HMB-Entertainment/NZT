@@ -10,7 +10,7 @@ WINDOWHEIGHT = 1080 # height in pixels
 #WINDOWWIDTH = 1020 # width in pixels
 #WINDOWHEIGHT = 580 # height in pixels
 TRIALS = 10 # number of trials
-WAIT = 3#0 # wait time in seconds between images
+WAIT = 30 # wait time in seconds between images
 LEVEL = 1 # match checks for image this number images back
 THREEDEE = False # loads images from 3D directory
 
