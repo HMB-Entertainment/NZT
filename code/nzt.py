@@ -10,7 +10,7 @@ WINDOWHEIGHT = 1080 # height in pixels
 #WINDOWWIDTH = 1020 # width in pixels
 #WINDOWHEIGHT = 580 # height in pixels
 TRIALS = 10 # number of trials
-WAIT = 30 # wait time in seconds between images
+WAIT = 3#0 # wait time in seconds between images
 LEVEL = 1 # match checks for image this number images back
 THREEDEE = False # loads images from 3D directory
 
@@ -28,6 +28,8 @@ strCubeElem = [''.join(x) for x in charCubeElem] # should I map this and combine
 numCubeElem = [int(x) for x in strCubeElem]  # {xyz | x,y,z in Z AND 0 < x,y,z < 4} 
 filenames3D = [os.path.join("3D", str(x)+'.png') for x in strCubeElem] # convert to files for ease of loading
 filenames2D = [os.path.join("2D", (str(x)+'.png')) for x in strCubeElem] # convert to files for ease of loading
+EVENT2 = USEREVENT+2
+NEXTTRIAL = USEREVENT+1
 
 if THREEDEE == False:
     filenames = filenames2D
@@ -44,11 +46,41 @@ def lstdiff(lst1, lst2): # useful for finding which x,y, or z same or different
 def lstpts(lsd): # assigns 1,2,4 points for x,y,z so each possible answer has a unique number
     return sum(lsd[i]*(2**i) for i in range(3))
 
+game = [cubeElem[random.randint(0,26)] for i in range(TRIALS + LEVEL)] #generates game according to user settings
+parse = [lstpts(lstdiff(game[i],game[i+LEVEL]))+1 for i in range(TRIALS)] #generates game answers
+
+DISPLAYSURF.blit(pygame.transform.scale(images[int(''.join(map(str,game[0])))], (WINDOWWIDTH, WINDOWHEIGHT)), (0,0)) # plays first image
+pygame.time.set_timer(USEREVENT+1, WAIT*1000) #timer for next image
+pygame.time.set_timer(EVENT2, WAIT*500) #timer for delta.mp3 to warn user to input final answer
+
+trialnumber = 0
+answer = -1
+
+def next_trial(x, trialnumber):
+    pygame.time.set_timer(EVENT2, WAIT*500)
+    trialnumber += 1
+    trial_game = game[trialnumber]
+    trial_int = int(''.join(map(str,trial_game)))
+    scale = (WINDOWWIDTH, WINDOWHEIGHT)
+    scaled_pic = pygame.transform.scale(images[trial_int], scale)
+    DISPLAYSURF.blit(scaled_pic, (0,0))
+    if trialnumber > LEVEL:
+        if answer == parse[trialnumber-LEVEL-1]:
+            play('right.mp3')
+        else:
+            play('wrong.mp3')
+    return trialnumber
+def stop_game(x, y):
+    pygame.quit()
+    sys.exit()
+def event2(x, trialnumber):
+    play('delta.mp3')
+    pygame.time.set_timer(EVENT2, 0)
+    return trialnumber
 def play(x):
     path = os.path.join('sounds/mp3s', x)
     pygame.mixer.music.load(path)
     pygame.mixer.music.play()
-
 events = {K_a: ['1.mp3', 1],
           K_s: ['2.mp3', 7],
           K_d: ['3.mp3', 6],
@@ -57,46 +89,25 @@ events = {K_a: ['1.mp3', 1],
           K_k: ['6.mp3', 3],
           K_l: ['7.mp3', 2],
           K_SEMICOLON: ['8.mp3', 8]}
-
-def key_up(Key):
-    [f, a] = events.get(Key, ['',0])
-    if (a != 0):
+def key_up(event, trialnumber):
+    key = event.key
+    [f, a] = events.get(key, ['',-1])
+    if (a != -1):
         play(f)
         answer = a
-
-game = [cubeElem[random.randint(0,26)] for i in range(TRIALS + LEVEL)] #generates game according to user settings
-parse = [lstpts(lstdiff(game[i],game[i+LEVEL]))+1 for i in range(TRIALS)] #generates game answers
-
-DISPLAYSURF.blit(pygame.transform.scale(images[int(''.join(map(str,game[0])))], (WINDOWWIDTH, WINDOWHEIGHT)), (0,0)) # plays first image
-pygame.time.set_timer(USEREVENT+1, WAIT*1000) #timer for next image
-pygame.time.set_timer(USEREVENT+2, WAIT*500) #timer for delta.mp3 to warn user to input final answer
-
-trialnumber = 0
-answer = -1
-
+    return trialnumber
+main_switch = {
+    QUIT: stop_game,
+    NEXTTRIAL: next_trial,
+    EVENT2: event2,
+    KEYUP: key_up
+    }
 while True: # main game loop
     for event in pygame.event.get():
-        if event.type == QUIT or trialnumber == TRIALS + LEVEL -1:
-            pygame.quit()
-            sys.exit()
-        if event.type == USEREVENT+2:
-            play('delta.mp3')
-            pygame.time.set_timer(USEREVENT+2, 0)
-        if event.type == USEREVENT+1:
-            pygame.time.set_timer(USEREVENT+2, WAIT*500)
-            trialnumber += 1
-            trial_game = game[trialnumber]
-            trial_int = int(''.join(map(str,trial_game)))
-            scale = (WINDOWWIDTH, WINDOWHEIGHT)
-            scaled_pic = pygame.transform.scale(images[trial_int], scale)
-            DISPLAYSURF.blit(scaled_pic, (0,0))
-            if trialnumber > LEVEL:
-                if answer == parse[trialnumber-LEVEL-1]:
-                    play('right.mp3')
-                else:
-                    play('wrong.mp3')
-        if event.type == KEYUP:
-            key_up(event.key)
+        if trialnumber == TRIALS + LEVEL -1:
+             stop_game(1, 1)
+        f = main_switch.get(event.type, lambda x,tn: tn)
+        trialnumber = f(event, trialnumber)
     pygame.display.update()
     fpsClock.tick(FPS)
 
