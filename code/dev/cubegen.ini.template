@@ -1,0 +1,24 @@
+#!/bin/sh
+
+file="$1"
+
+cat <<EOF
+;; povray RES.INI file
+;; I usually run povray cubegen[high]
+;; [med] setting is for 2d
+
+Input_File_Name=cubegen.pov
+Output_File_Name="$file"
+
+;default
++W300 +H300
+
+[Low]
++W80 +H60
+
+[Med]
++W1920 +H1080 +A +J
+
+[High]
++W3840 +H2160 +A +J
+EOF
