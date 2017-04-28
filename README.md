@@ -56,16 +56,20 @@ At half-time (in this case 15 seconds) a wavering warble tune will indicate that
 
 4 - If the element satisfies neither of these three conditions, then there exists no relationship.  
 
-- 'a' -> no relationship -> low A
-- 's' -> x axis -> B
-- 'd' -> y axix -> C
-- 'f' -> z axis -> D
-- 'j' -> xy plane -> E
-- 'k' -> zx plane -> F
-- 'l' -> zy plane -> G
-- ';' -> xyz -> same element -> high A
+- 'a' -> no relationship -> low A // BLACK
+- 's' -> x axis -> B // RED
+- 'd' -> y axix -> C // GREEN
+- 'f' -> z axis -> D // BLUE
+- 'j' -> xy plane -> E // YELLOW
+- 'k' -> zx plane -> F // CYAN
+- 'l' -> zy plane -> G // MAGENTA
+- ';' -> xyz -> same element -> high A // WHITE
 
-If this terse explanation causes your eyes to glaze over, DON'T PANIC. An intuitive visual explanation with tons of pictures will soon follow, along with a screencast. 
+If this terse explanation causes your eyes to glaze over, DON'T PANIC. A visual explanation using rules of RGB additive synthesis illustrates the relationship between elments.
+
+Look and find enlightenment:
+
+
 
 ## Technical Features
 
