@@ -69,7 +69,10 @@ If this terse explanation causes your eyes to glaze over, DON'T PANIC. A visual 
 
 Look and find enlightenment:
 
-
+![center](tutorial222.png  "Universal Symmetry")
+![corner](tutorial111.png  "8x symmetry")
+![face](tutorial221.png  "6x symmetry")
+![edge](welcomeToThe231.png  "12x symmetry")
 
 ## Technical Features
 
