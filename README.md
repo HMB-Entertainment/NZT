@@ -61,8 +61,8 @@ At half-time (in this case 15 seconds) a wavering warble tune will indicate that
 - 'd' -> y axix -> C // GREEN
 - 'f' -> z axis -> D // BLUE
 - 'j' -> xy plane -> E // YELLOW
-- 'k' -> zx plane -> F // CYAN
-- 'l' -> zy plane -> G // MAGENTA
+- 'k' -> zx plane -> F // MAGENTA
+- 'l' -> zy plane -> G // CYAN
 - ';' -> xyz -> same element -> high A // WHITE
 
 If this terse explanation causes your eyes to glaze over, DON'T PANIC. A visual explanation using rules of RGB additive synthesis illustrates the relationship between elments.
