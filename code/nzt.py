@@ -53,10 +53,15 @@ DISPLAYSURF.blit(pygame.transform.scale(images[int(''.join(map(str,game[0])))], 
 pygame.time.set_timer(USEREVENT+1, WAIT*1000) #timer for next image
 pygame.time.set_timer(EVENT2, WAIT*500) #timer for delta.mp3 to warn user to input final answer
 
+def play(x):
+    path = os.path.join('sounds/mp3s', x)
+    pygame.mixer.music.load(path)
+    pygame.mixer.music.play()
+    
 trialnumber = 0
 answer = -1
 
-def next_trial(x, trialnumber):
+def next_trial(x, trialnumber, answer):
     pygame.time.set_timer(EVENT2, WAIT*500)
     trialnumber += 1
     trial_game = game[trialnumber]
@@ -69,18 +74,14 @@ def next_trial(x, trialnumber):
             play('right.mp3')
         else:
             play('wrong.mp3')
-    return trialnumber
-def stop_game(x, y):
+    return [trialnumber, answer]
+def stop_game(x, y, z):
     pygame.quit()
     sys.exit()
-def event2(x, trialnumber):
+def event2(x, trialnumber, answer):
     play('delta.mp3')
     pygame.time.set_timer(EVENT2, 0)
-    return trialnumber
-def play(x):
-    path = os.path.join('sounds/mp3s', x)
-    pygame.mixer.music.load(path)
-    pygame.mixer.music.play()
+    return [trialnumber, answer]
 events = {K_a: ['1.mp3', 1],
           K_s: ['2.mp3', 7],
           K_d: ['3.mp3', 6],
@@ -89,25 +90,24 @@ events = {K_a: ['1.mp3', 1],
           K_k: ['6.mp3', 3],
           K_l: ['7.mp3', 2],
           K_SEMICOLON: ['8.mp3', 8]}
-def key_up(event, trialnumber):
-    key = event.key
-    [f, a] = events.get(key, ['',-1])
+def key_up(event, trialnumber, answer):
+    [f, a] = events.get(event.key, ['',-1])
     if (a != -1):
         play(f)
         answer = a
-    return trialnumber
+    return [trialnumber, answer]
 main_switch = {
     QUIT: stop_game,
     NEXTTRIAL: next_trial,
     EVENT2: event2,
-    KEYUP: key_up
-    }
+    KEYUP: key_up}
+def nothing(a,b,c): return [b,c]
 while True: # main game loop
     for event in pygame.event.get():
         if trialnumber == TRIALS + LEVEL -1:
-             stop_game(1, 1)
-        f = main_switch.get(event.type, lambda x,tn: tn)
-        trialnumber = f(event, trialnumber)
+             stop_game(0, 0, 0)
+        f = main_switch.get(event.type, nothing)
+        [trialnumber, answer] = f(event,trialnumber,answer)
     pygame.display.update()
     fpsClock.tick(FPS)
 
