@@ -97,7 +97,7 @@ EDGE
 - NZT indicates failure via a sad chromatic descent. 
 - NZT indicates success via a happy major scale. 
 - The keys "a s d f j k l ;" when played in succesion will play out an A natural minor scale.
-- There exists, quite literally harmony at the interface. 
+- There exists, quite literally, harmony at the interface. 
 
 *Ray Tracing*
 - Originally I tried using turtle but it fell immensely short of my standards.
