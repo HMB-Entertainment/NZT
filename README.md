@@ -1,4 +1,4 @@
-
+Raytraced 3D N-Back with tunes generated in Haskell
 
 ![wow](screenshot.png  "Intro")
 
@@ -26,11 +26,13 @@ NZT represents a purely visual 3D evolution of these games. I hope that it you f
 
 ***These instructions will improve when I get installation feedback from a few friends***
 
-1. Make Sure you have pip installed and install PyGame
+1. Make sure you have pip installed and install PyGame
 
 - pip install pygame
 
 2. Clone the repository using git clone
+
+- git clone https://github.com/HMB-Entertainment/NZT.git
 
 3. run nzt.py using python version 2
 
@@ -99,7 +101,7 @@ EDGE
 
 *Ray Tracing*
 - Originally I tried using turtle but it fell immensely short of my standards.
-- Paul Grahm's ANSI Common Lisp inspired me to consider Ray Tracing.
+- Paul Graham's ANSI Common Lisp inspired me to consider Ray Tracing.
 - Pov-ray install needed to run .pov files to make your own images.
 
 *Music Generation*
@@ -125,27 +127,31 @@ I figured it would take me a few weeks to get it to version 0. After spending fa
 
 I'd like to offer special thanks to Gwern for inspiring this project by mentioning this idea on his fantastic site. https://www.gwern.net/ 
 
-Secondly, I'd like to thank my friend Greg for using his wizardry of Grep,Sed, and Awk in creating invaluable templates for automatic generation of images.
+I'd like to thank my friend Greg for using his wizardry of Grep,Sed, and Awk in creating templates for automatic generation of images.
+
+I'd also like to thank Zack for improving the logic of the game and refactoring the code in functional style.
 
 If you like NZT, or see a way to make it better, consider contributing! Let me know your thoughts at holdmybeer@protonmail.com. Here are some ideas. 
 
 ### Features to Add
 I would love contributions to continue making NZT a more elegant game for elite memory enhancement. Here is a list of features to implement later rated from 1 to 3 stars according to difficulty. 
 
-Screencast *
- - Planning a screencast soon! An engaging one would serve as a great way to show new users how to get started and resolve any confusion with the presentation of the interface in the readme. 
- 
+I intend to do these in chronological order as I find the time. I'll add them to the completed secion afterwards. If you would like to help, please do one of the featues after the first one. This way we don't end up replicating the same effort. 
+
+Lightning Mode *
+- I am currently working on a mode which will play all the images you need to remember in rapid succession. It will have the same difficulty as N=1, but will help train memorization for higher N levels and look fantastic. 
+
 Auto Image Generation *
 - Planning to create a shell script integrating templates to automatically generate high quality 3D images on the user's computer. This will give users the highest resolution images possible and bypass github size restrictions. Also makes for a more elegant and extensible program enabling anyone to easily modify NZT to suit their style of gameplay. 
 
 3D Support *
 - NZT is currently compatible with 3D and has been successfully tested with it on multiple systems. 3D images are not included with the initial release. However, if this feature has sufficient demand, this represents the next logical extension.
 
-Refactor Code *
-- Priority was creating a minimum viable product. With proof of concept done, improving existing code takes less effort. I used an egregious collection of if statements in the game loop, however I am new to Python and am unsure how to clean this up without lisp macros. 
-
 Backwards compatibility with N-Back and Dual N-Back *
 - Using the existing sounds and povray code generate simpler images that are a subset of a cube and execute N-back and Dual N-back
+
+Screencast *
+ - Planning a screencast soon! An engaging one would serve as a great way to show new users how to get started and resolve any confusion with the presentation of the interface in the readme. 
 
 MIDI Support **
 - PyGame is incompatible with MIDI files so I wrote a shell script to convert them to mp3.
@@ -163,3 +169,7 @@ FPS game support ***
 
 Quaternion Rotations ***
 - A setting with perhaps lower quality but a rotating cube would add yet another dimension to NZT! Quaternions could represent these computations in a stable and fast manner while preserving quality. Algorithm thoughts : generate images prior to the game, and use them to approximate intermediate images thus mostly preserving quality. Gameplay options reduced to four as the user already has to remember a rotating structure : Same element, same axis, same plane, No Match. 
+
+### Features Added
+
+Refactor code * - DONE thanks to Zack!
