@@ -22,6 +22,27 @@ The original N-back game illuminates a randomly selected square on a 3x3 tic tac
 
 NZT represents a purely visual 3D evolution of these games. I hope that it you find it vastly superiour to either of its predecessors as entertainment as well as brain food. 
 
+## UPDATE !!! 
+
+NZT now in *BETA* ... Lightning mode finished! Set LIGHTNING equal to True. Can't wait for feedback from my beloved beta testers! 
+
+Example of Tracer in 3D SBS! View like magic eye image with focal point behind monitor. 
+
+Have fun!
+
+Possible to extend this in many ways: 
+- Make lighting "fade" displaying past elements faintly.
+- Change color of elements visited twice, thrice, (or more!) in same visual loop.
+- Different color for current and last element. 
+- Alter the motion of the lightning.
+- New music for lightning related events?
+- Automatically create tutorial images and instead of normal image, display rainbow images when the two elements have a relationship! (e.g. HINT mode)
+- Further ideas at the end of the readme. 
+
+Suggestions are left as an exercise to the reader. ;)
+
+Code has been refactored considerably yet again. Added many comments for readability. Grouped similar parts together. Coded in functional style. 
+
 ## Installation
 
 ***These instructions will improve when I get installation feedback from a few friends***
@@ -103,6 +124,8 @@ EDGE
 - Originally I tried using turtle but it fell immensely short of my standards.
 - Paul Graham's ANSI Common Lisp inspired me to consider Ray Tracing.
 - Pov-ray install needed to run .pov files to make your own images.
+- Generating images takes time
+- Looks AMAZING when you play NZT with them afterwards!
 
 *Music Generation*
 - I designed the tunes from my own musical intuition.
@@ -123,7 +146,9 @@ EDGE
 ### Epilogue
 This project took much more time than I anticipated. I figured it would serve as a great way to jump into programming for the first time. I'd never made anything before. However this idea called to me, imploring me to will it into existence. It would not stop haunting me until I did. What a journey! 
 
-I figured it would take me a few weeks to get it to version 0. After spending far more time than I care to admit, I ended up learning more than I bargained. As I pondered and implemented various ideas I learned about python, pygame, linux, bash, regular expressions, text editors, window managers, antialiasing, jitter, haskell, dependency hell, euterpea, git, benefits of commenting code, as well as balancing my wish for perfection with the neccesity of execution. It took enourmous will to fight the forces of entropy as they threw obstacle after obstacle in my path. =D
+I figured it would take me a few weeks to get it to version 0. 
+
+After spending far more time than I care to admit, I ended up learning more than I bargained. As I pondered and implemented various ideas I learned about python, pygame, linux, bash, regular expressions, text editors, window managers, antialiasing, jitter, haskell, dependency hell, euterpea, git, benefits of commenting code, as well as balancing my wish for perfection with the neccesity of execution. It took enourmous will to fight the forces of entropy as they threw obstacle after obstacle in my path. =D
 
 I'd like to offer special thanks to Gwern for inspiring this project by mentioning this idea on his fantastic site. https://www.gwern.net/ 
 
@@ -136,16 +161,16 @@ If you like NZT, or see a way to make it better, consider contributing! Let me k
 ### Features to Add
 I would love contributions to continue making NZT a more elegant game for elite memory enhancement. Here is a list of features to implement later rated from 1 to 3 stars according to difficulty. 
 
-I intend to do these in chronological order as I find the time. I'll add them to the completed secion afterwards. If you would like to help, please do one of the featues after the first one. This way we don't end up replicating the same effort. 
-
-Lightning Mode *
-- I am currently working on a mode which will play all the images you need to remember in rapid succession. It will have the same difficulty as N=1, but will help train memorization for higher N levels and look fantastic. 
+I intend to do these in chronological order as I find the time. I'll add them to the completed secion afterwards. If you would like to help, please do one of the featues after the first one. This way we don't end up replicating the same effort.  
 
 Auto Image Generation *
 - Planning to create a shell script integrating templates to automatically generate high quality 3D images on the user's computer. This will give users the highest resolution images possible and bypass github size restrictions. Also makes for a more elegant and extensible program enabling anyone to easily modify NZT to suit their style of gameplay. 
 
 3D Support *
-- NZT is currently compatible with 3D and has been successfully tested with it on multiple systems. 3D images are not included with the initial release. However, if this feature has sufficient demand, this represents the next logical extension.
+- NZT is currently compatible with 3D images and has been successfully tested with it on multiple systems. 3D images are not included with the initial release. However, if this feature has sufficient demand, this represents the next logical extension. e.g. code to generate 3D images automatically with different colors for all levels. 
+
+[NEW] Object Orientation *
+- Object Oriented code for gameplay data constants and methods will provide a better interface to develop new features and functionality.
 
 Backwards compatibility with N-Back and Dual N-Back *
 - Using the existing sounds and povray code generate simpler images that are a subset of a cube and execute N-back and Dual N-back
@@ -172,4 +197,5 @@ Quaternion Rotations ***
 
 ### Features Added
 
-Refactor code * - DONE thanks to Zack!
+Refactor code * - DONE thanks to Zack! 4/28/18
+Lightning mode * - DONE (me) 5/1/17
