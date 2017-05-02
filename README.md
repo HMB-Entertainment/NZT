@@ -24,6 +24,10 @@ NZT represents a purely visual 3D evolution of these games. I hope that it you f
 
 ## UPDATE !!! 
 
+Lightning mode on by default to help get started. 
+
+Fixed bug in events comprehension that sometimes marked user wrong. All answers now correctly evaluated,
+
 NZT now in *BETA* ... Lightning mode finished! Set LIGHTNING equal to True. Can't wait for feedback from my beloved beta testers! 
 
 Example of Tracer in 3D SBS! View like magic eye image and see the cube. 
