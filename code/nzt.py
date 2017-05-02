@@ -11,7 +11,7 @@ TRIALS = 10 # number of trials
 WAIT = 30 # wait time in seconds between images
 LEVEL = 1 # match checks for image this number images back
 THREEDEE = False # loads images from 3D directory
-LIGHTNING = False # tracer mode to train visualization!
+LIGHTNING = True # tracer mode to train visualization!
 SLOW = 1 # At LEVEL = 2, 3 images per SLOW number of seconds.
 
 # GLOBAL VARIABLES
@@ -104,7 +104,7 @@ images = dict(zip(numCubeElem,[pygame.image.load(i) for i in filenames])) # asso
 
 events = dict(zip([K_a, K_s, K_d, K_f, K_j, K_k, K_l, K_SEMICOLON], # keypress identifiers as key
 	 	  zip([str(x) + '.mp3' for x in range(1,9)], # (mp3, answer)
-	    	      [1] + range(2,8)[::-1] + [8])))
+	    	      [1,7,6,4,5,3,2,8])))
 
 main_switch = dict(zip([QUIT,NEXTTRIAL,EVENT2,EVENT3,KEYUP], # event type
 		 [stop_game,next_trial,event2,event3,key_up])) # function
